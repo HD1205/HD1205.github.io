@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+    </head>
+    <body class="appear-animate">
+        
+            <!-- Head Section -->
+            <section class="small-section bg-gray-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">"공 지 사 항"</h1>
+                            <div class="hs-line-4 font-alt black">
+                                용인대학교 커뮤니티 사이트 이용 하기전 숙지할 사항
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+            
+            <!-- Search Section -->
+            <section class="small-section">
+                <div class="container relative">
+                    
+                    <!-- Search -->
+                    
+                    <form class="form-inline form" role="form">
+                        <div class="search-wrap">
+                            <button class="search-button animate" type="submit" title="검색">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <input type="text" name="query" class="form-control search-field" placeholder="제목으로 검색">
+                        </div>
+                    </form>
+                    
+                    <!-- End Search -->
+                    
+                </div>
+            </section>
+            <!-- End Search Section -->
+            
+            
+            <!-- Section -->
+            <section class="page-section">
+                
+                <div class="container relative">
+                    
+                    <div class="row">
+                        <%@notice.each do |n|%>
+                        <!-- Content -->
+                        <div class="col-sm-10 col-sm-offset-1">
+
+                            <!-- Post -->
+                            <div class="blog-item">
+                                
+                                <!-- Date -->
+                                <h2 class="blog-item-title font-alt">제목 : <%=n.title%></h2>
+
+                                <div class="blog-item-data">
+                                    <a href="#"><i class="fa fa-user"></i>작성일 : <%=n.created_at.strftime("%Y-%m-%d")%> </a>
+
+                                    <div class="blog-item-body">
+                                        <p>
+                                            <%=n.content%>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%end%>
+                    </div>
+                </div>
+            </section>
+    
+    
+    </body>
+</html>

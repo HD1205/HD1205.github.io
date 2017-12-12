@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body class="appear-animate">
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+   
+            <!-- Head Section -->
+            <section class="small-section bg-gray-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">"용인대학교 강의 정보"</h1>
+                            <div class="hs-line-4 font-alt black">
+                                용인대학교 강의의 궁굼한 사항과 현재 재학생들의 후기를 볼수있는 게시판
+                            </div>
+                        </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+            
+            
+            <!-- Section -->
+            <section class="page-section">
+                <div class="container relative">
+                    
+                    <!-- Product Content -->
+                    <div class="row mb-60 mb-xs-30">
+                        
+                        <!-- Product Images -->
+                        <div class="col-md-4 mb-md-30">
+                            <div class="post-prev-img">
+                               <%= image_tag("용인대로고.jpg") %>
+                            </div>
+                        </div>
+                        <!-- End Product Images -->
+                        
+                        <div class="col-md-8 mb-md-30">
+                            <h1>----------------------강의에 대한 질문----------------------</h1>
+                              <h3><%=@score.content%></h3>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2>질문에 대한 답변 or 댓글</h2>
+                            <form action="/score/comment/write/<%=@score.id%>" method="post" class="form contact-form" id="contact_form">
+                                <div class="clearfix">
+                                    <!-- Name -->
+                                    <div class="form-group">
+                                        <% unless user_signed_in? %>
+                                            <h4>로그인 해야만 글쓰기가 가능합니다!</h4>
+                                        <% else %>
+                                            <p>작성자 : <%= current_user.email %></p>
+                                    </div>
+                                    <!-- Message -->
+                                    <div class="form-group">
+                                        <textarea name="comment" id="comment" class="input-lg round form-control" style="height: 84px;" placeholder="게시 할 내용을 작성해주세요."></textarea>
+                                    </div>
+                                    <!-- Send Button -->
+                                    <div class="align-right pt-10">
+                                        <button type="submit" class="submit_btn btn btn-mod btn-large btn-round btn-full" id="submit_btn">
+                                            저장하기
+                                        </button>
+                                    </div>
+                                    <!-- Inform Tip -->
+                                    <div class="form-tip pt-20">
+                                        <i class="fa fa-info-circle"></i>
+                                        All the fields are required
+                                    </div>
+                                </div>
+                                <div id="result"></div>
+                            </form>
+                                    <% end %>
+                                    <hr>
+                            <% @score.comments.each do |c| %>
+                                <p><%=c.comment%> &nbsp&nbsp&nbsp&nbsp 작성자:<%=c.user.email%></p>
+
+                                       <% if c.user == current_user %>
+                                            <a href="/score/comment/destroy/<%=@score.id%>/<%=c.id%>">[삭제하기]</a><br><br>
+                                        <%end%>
+                                <hr>
+                                
+                            <%end%>
+          
+                        </div>
+                    </div>
+                    <!-- End Tab panes -->
+                
+            </section>
+            <!-- End Section -->
+   
+        </div>
+        <!-- End Page Wrap -->
+        
+    </body>
+</html>

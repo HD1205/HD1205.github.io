@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+    </head>
+    <body class="appear-animate">
+        
+        
+            <!-- Head Section -->
+            <section class="small-section bg-gray-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">"용인대학교 강의 정보"</h1>
+                            <div class="hs-line-4 font-alt black">
+                                용인대학교 강의의 궁굼한 사항과 현재 재학생들의 후기를 볼수있는 게시판
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+            
+            
+            <!-- Section -->
+            <section class="page-section">
+                <div class="container relative">
+                    <% if user_signed_in? %>
+                        <a href="/scorewrite"><button type="button" class="btn btn-primary">강의 정보 등록 하러 가기&nbsp&nbsp&nbsp  <-- click </button></a>
+                    <%else%>
+                        <h4> 로그인 해야만 게시글 작성이 가능합니다.</h4>
+                    <%end%>
+                    <br><br><br>
+                    <div class="row">
+                        
+                        <!-- Content -->
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <h2>-----------------------강의 정보 / 질문-----------------------</h2>
+                            <!-- Post -->
+                            <div class="blog-item">
+                                <% @score.each do |s| %>
+                               
+                                
+                                <!-- Post Title -->
+                                <h2 class="blog-item-title font-alt"><%=s.content%></h2>
+                                
+                                <!-- Author, Categories, Comments -->
+                                <div class="blog-item-data">
+                                   <i class="fa fa-user"></i>작성자:<%=s.user.email%>
+                                </div>
+                                
+                                
+                                
+                                <!-- Read More Link -->
+                                <div class="blog-item-foot">
+                                    <a href="/scoredata/<%=s.id%>" class="btn btn-mod btn-round  btn-small">질문에 대한 답변 or 댓글 달기 / 보기 <i class="fa fa-angle-right"></i></a>
+                                </div><br>
+                                <%end%>
+                                
+                            </div>
+                            <!-- End Post -->
+      
+            </section>
+            <!-- End Section -->
+
+        </div>
+        <!-- End Page Wrap -->
+        
+       
+    </body>
+</html>

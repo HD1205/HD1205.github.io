@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+    </head>
+    <body class="appear-animate">
+
+            
+            <!-- Head Section -->
+            <section class="small-section bg-gray-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-15 font-alt mb-20 mb-xs-0">용인대학교 근처 "식당정보"</h1>
+                            <div class="hs-line-4 font-alt black">
+                                학교 근처 식당들의 정보와 메뉴 그리고 후기로 맛집들을 공유하는 게시판
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+            
+            
+            <!-- Section -->
+            <section class="page-section">
+                <div class="container relative">
+                    
+                    <!-- Product Content -->
+                    <div class="row mb-60 mb-xs-30">
+                        
+                        <!-- Product Images -->
+                        <div class="col-md-4 mb-md-30">
+                            <div class="post-prev-img">
+                               <%= image_tag("foodstore/" + @restaurant.photoname + ".jpg") %>
+                            </div>
+                        </div>
+                        <!-- End Product Images -->
+                        
+                        <div class="col-md-8 mb-md-30">
+                            <h1>----------------------<%=@restaurant.restaurantname%>----------------------</h1>
+                              <h3><<<<<<<<<<<<<<<&nbsp메&nbsp&nbsp&nbsp뉴&nbsp>>>>>>>>>>>>>>></h3>
+                              <%= image_tag("foodmenu/" + @restaurant.foodmenu + ".JPG") %>
+                              <h4>주 소 : <%=@restaurant.address%></h4>
+                              <h4>전화번호 : <%=@restaurant.tel%></h4>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2> 음식점의 위치</h2>
+                            <%= image_tag("foodmap/" + @restaurant.mapname + ".jpg") %>
+                                    
+                        </div>
+                    </div>
+                    <!-- End Tab panes -->
+                
+            </section>
+            <!-- End Section -->
+   
+        </div>
+        <!-- End Page Wrap -->
+        
+    </body>
+</html>

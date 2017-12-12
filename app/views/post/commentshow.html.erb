@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+    </head>
+    <body class="appear-animate">
+
+          <!-- Home Section -->
+            <section class="page-section">
+                <div class="relative container-1400">
+
+                    <!-- Hero Content -->
+                    <div class="home-content">
+                        <div class="home-text align-center">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                   
+                                    <h2 class="hs-line-15 font-alt mb-0">"자유게시판"</h2><br><br>
+                                    <p>자유롭게 주제 상관없이 게시글을 작성하는 게시판</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Hero Content -->
+
+                </div>
+            </section>
+            <!-- End Home Section -->
+            
+            <!-- Divider -->
+            <div class="container-1400">
+                <hr class="mt-0 mb-0 black"/>
+                <hr class="mt-0 mb-0 black"/>
+            </div>
+            <!-- End Divider -->
+            
+            <!-- Contact Section -->
+            <section class="page-section">
+                <div class="container-1400 relative">
+                    
+                    <div class="row mb-60 mb-xs-40">
+                        
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="row">
+                                
+                                
+                                <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                                    <div>
+                                        <h2>문의 사항</h2> 
+                                    </div>
+                                </div>
+                                
+                                
+                                <!-- Phone -->
+                                <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                                    <div class="contact-item">
+                                        <div class="ci-icon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <div class="ci-title font-alt">
+                                            <h3>카카오톡 id</h3>
+                                        </div>
+                                        <div class="ci-text">
+                                            <h3>junghun1203</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Phone -->
+                                
+                                <!-- Address -->
+                                <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                                    <div class="contact-item">
+                                        <div class="ci-icon">
+                                            <i class="fa fa-bicycle"></i>
+                                        </div>
+                                        <div class="ci-title font-alt">
+                                            <h3>E-Mail</h3>
+                                        </div>
+                                        <div class="ci-text">
+                                            <h3>kimjunghun@likelion.org</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Address -->
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                        <div class="container-1400">
+                            <hr class="mt-0 mb-0 black"/>
+                            <hr class="mt-0 mb-0 black"/>
+                        </div>
+                        <% unless user_signed_in? %>
+                                <h4>로그인 해야만 댓글작성이 가능합니다!</h4>
+                        <% else %>
+                    <!-- Contact Form -->                            
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h1>댓글 작성</h1>
+                            <form action="/freepost/commentshow/write/<%=@post.id%>" method="post" class="form contact-form" id="contact_form">
+                                <div class="clearfix">
+                                    <!-- Name -->
+                                    <div class="form-group">
+                                            <p>작성자 : <%= current_user.email %></p>
+                                    </div>
+                                    
+                                    <!-- Message -->
+                                    <div class="form-group">
+                                        <textarea name="comment" id="comment" class="input-lg round form-control" style="height: 84px;" placeholder="댓글의 내용을 작성해주세요."></textarea>
+                                    </div>
+                                    <!-- Send Button -->
+                                    <div class="align-right pt-10">
+                                        <button type="submit" class="submit_btn btn btn-mod btn-large btn-round btn-full" id="submit_btn">
+                                            댓글 저장하기
+                                        </button>
+                                    </div>
+                                    <!-- Inform Tip -->
+                                    <div class="form-tip pt-20">
+                                        <i class="fa fa-info-circle"></i>
+                                        All the fields are required
+                                    </div>
+                                </div>
+                                <div id="result"></div>
+                            </form>
+                            <%end%>
+                 
+                            <h2>댓글 목록</h2>
+                            <hr>
+                            <% @post.comments.each do |c| %>
+                                
+                                <h4><%=c.comment%> &nbsp&nbsp&nbsp&nbsp 작성자:<%=c.user.email%></h4>
+                                <% if user_signed_in? %>
+                                       <% if c.user == current_user %>
+                                            <a href="/freepost/destroy/<%= @post.id %>/<%=c.id%>">[댓글 삭제하기]</a><br>
+                                        <%end%>
+                                <%end%>
+                                <hr>
+                            <%end%>
+                            <a href="/freepost"><button type="button" class="btn btn-primary">게시글 목록으로 가기</button></a>
+                        </div>
+                        
+                    </div>
+                    <!-- End Contact Form -->
+                    
+                </div>
+            </section>
+            <!-- End Contact Section -->
+            
+            
+            
+                    
+                 </div>
+                 
+                 <!-- Top Link -->
+                 <div class="local-scroll">
+                     <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+                 </div>
+                 <!-- End Top Link -->
+                 
+        
+        </div>
+        <!-- End Page Wrap -->
+  
+    </body>
+</html>
